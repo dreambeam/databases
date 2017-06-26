@@ -63,13 +63,13 @@ mysql> SHOW TABLE STATUS LIKE 'sbtest1';
 	$ apt-get update
 	$ apt-get install -y sysbench
 	$ apt-get install -y mysql-server
-	$ sysbench --test=fileio --file-total-size=4G --file-num=64 prepareß
+	$ sysbench --test=fileio --file-total-size=4G --file-num=64 prepare
 
 
 ## Install Sysbench CentOS
 	
 	- CentOS 7.1
-	Install Sysbench 0.4.12 via YUM on CentOS 7.1
+	Install Sysbench 0.4.12 via YUM.
 	It's available in the epel repo.
 
 	$ yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
@@ -77,7 +77,7 @@ mysql> SHOW TABLE STATUS LIKE 'sbtest1';
 
 	- CentOS 7.3
 
-	Install Sysbench 0.5 via YUM on CentOS 7.3
+	Install Sysbench 0.5 via YUM
 	You need to install the latest Percona repo to install Sysbench 0.5 if you use EPEL you will install version 0.4.12. Sysbench version 0.5 allows you to do LUA scripting and create multiple tables to run the OLTP test against.
 
 	$ wget https://www.percona.com/redir/downloads/percona-release/redhat/latest/percona-release-0.1-4.noarch.rpm
