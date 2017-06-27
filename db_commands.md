@@ -4,62 +4,65 @@
 
 ```
 mysql -u root -p'root'
-show status like 'wsrep%';
+mysql> show status like 'wsrep%';
 ```
 
 ## Create an admin user
 
-
+```
 create user 'admin'@'%' identified by 'root';
 grant all privileges on *.* to 'admin'@'%' with grant option;
 flush privileges;
-
+```
 
 ## Create a proxysql user
 
-
+```
 CREATE USER 'proxysqluser'@'%' IDENTIFIED BY 'root';
 GRANT USAGE ON *.* TO 'proxysqluser'@'%';
 FLUSH PRIVILEGES;
+```
 
 ## Create a proxysql monitor
 
+```
 CREATE USER 'proxysqlmonitor'@'%' IDENTIFIED BY 'root';
 GRANT USAGE ON *.* TO 'proxysqlmonitor'@'%';
 FLUSH PRIVILEGES;
+```
 
 
 ## Create Database
 
-
+```
 CREATE DATABASE testdb;
 
 USE testdb;
 CREATE TABLE example (node_id INT PRIMARY KEY, node_name VARCHAR(30));
 INSERT INTO testdb.example VALUES (1, 'sometext');
 SELECT * FROM testdb.example;
-
+```
 
 ## Query size of mysql db
 
-
+```
 mysql> SELECT table_schema "systest", Round(Sum(data_length + index_length) / 1024 /1024, 1) "DB Size in MB"
     -> FROM information_schema.tables
     -> GROUP By table_schema;
 ;
-
+```
 ## How to Get True Size of MySQL Database?
 
-
+```
 mysql> SHOW TABLE STATUS LIKE 'table_name';
 mysql> SHOW TABLE STATUS LIKE 'sbtest1';
+```
 
 ## Get a table count
 	mysql> select count(*) from 'table_name';
 	mysql> select count(*) from 'sbtest1;
 
 ## Install Sysbench Debian
-
 
 	Make sure the system is updated. Then simply install Sysbench, and MySQL Server if you plan on running OLTP tests.
 
