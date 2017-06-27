@@ -2,9 +2,10 @@
 
 ## Create testdb: verifying replication
 
+```
 mysql -u root -p'root'
 show status like 'wsrep%';
-
+```
 
 ## Create an admin user
 
@@ -53,7 +54,9 @@ mysql> SELECT table_schema "systest", Round(Sum(data_length + index_length) / 10
 mysql> SHOW TABLE STATUS LIKE 'table_name';
 mysql> SHOW TABLE STATUS LIKE 'sbtest1';
 
-
+## Get a table count
+	mysql> select count(*) from 'table_name';
+	mysql> select count(*) from 'sbtest1;
 
 ## Install Sysbench Debian
 
