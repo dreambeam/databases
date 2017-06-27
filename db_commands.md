@@ -3,44 +3,44 @@
 ## Create testdb: verifying replication
 
 ```
-mysql -u root -p'root'
+$ mysql -u root -p'root'
 mysql> show status like 'wsrep%';
 ```
 
 ## Create an admin user
 
 ```
-create user 'admin'@'%' identified by 'root';
-grant all privileges on *.* to 'admin'@'%' with grant option;
-flush privileges;
+mysql> create user 'admin'@'%' identified by 'root';
+mysql> grant all privileges on *.* to 'admin'@'%' with grant option;
+mysql> flush privileges;
 ```
 
 ## Create a proxysql user
 
 ```
-CREATE USER 'proxysqluser'@'%' IDENTIFIED BY 'root';
-GRANT USAGE ON *.* TO 'proxysqluser'@'%';
-FLUSH PRIVILEGES;
+mysql> CREATE USER 'proxysqluser'@'%' IDENTIFIED BY 'root';
+mysql> GRANT USAGE ON *.* TO 'proxysqluser'@'%';
+mysql> FLUSH PRIVILEGES;
 ```
 
 ## Create a proxysql monitor
 
 ```
-CREATE USER 'proxysqlmonitor'@'%' IDENTIFIED BY 'root';
-GRANT USAGE ON *.* TO 'proxysqlmonitor'@'%';
-FLUSH PRIVILEGES;
+mysql> CREATE USER 'proxysqlmonitor'@'%' IDENTIFIED BY 'root';
+mysql> GRANT USAGE ON *.* TO 'proxysqlmonitor'@'%';
+mysql> FLUSH PRIVILEGES;
 ```
 
 
 ## Create Database
 
 ```
-CREATE DATABASE testdb;
+mysql> CREATE DATABASE testdb;
 
-USE testdb;
-CREATE TABLE example (node_id INT PRIMARY KEY, node_name VARCHAR(30));
-INSERT INTO testdb.example VALUES (1, 'sometext');
-SELECT * FROM testdb.example;
+mysql> USE testdb;
+mysql> CREATE TABLE example (node_id INT PRIMARY KEY, node_name VARCHAR(30));
+mysql> INSERT INTO testdb.example VALUES (1, 'sometext');
+mysql> SELECT * FROM testdb.example;
 ```
 
 ## Query size of mysql db
