@@ -23,6 +23,15 @@ mysql> GRANT USAGE ON *.* TO 'proxysqluser'@'%';
 mysql> FLUSH PRIVILEGES;
 ```
 
+## Show MySQL Users
+
+We only need the User table
+```
+mysql -u root -p
+mysql> SELECT User, Host, Password FROM mysql.user;
+mysql> SELECT User FROM mysql.user;
+mysql> SELECT DISTINCT User FROM mysql.user;
+
 ## Create a proxysql monitor
 
 ```
@@ -43,6 +52,18 @@ mysql> INSERT INTO testdb.example VALUES (1, 'sometext');
 mysql> SELECT * FROM testdb.example;
 ```
 
+
+## Create Table
+```
+mysql> create table table1 (a int not null auto_increment, primary key(a));
+
+mysql> insert into table1 values (),(),(),(),();
+
+mysql> select * from table1;
+```
+
+
+
 ## Query size of mysql db
 
 ```
@@ -62,6 +83,44 @@ mysql> SHOW TABLE STATUS LIKE 'sbtest1';
 	mysql> select count(*) from 'table_name';
 	mysql> select count(*) from 'sbtest1;
 
+
+## How to Back Up MySQL Databases From The Command Line
+
+- Automated backups are important
+1. Create a backup
+	The mysqldump command is used to create textfile “dumps” of databases managed by MySQL.
+	1.1. Single database
+	```
+		mysqldump database_name > database_name.sql
+	```
+	1.2. Multiple databases
+	```
+		mysqldump --databases database_one database_two > two_databases.sql
+	```
+	1.3. All databases
+	```
+		mysqldump --all-databases > all_databases.sql
+	```
+
+2. Restoring a backup
+	database_name.sql: name of the backup file to be restored.
+	database_name: name of the database you want to restore
+```
+mysql database_name < database_name.sql
+```
+
+Restore a single database from a dump of all databases
+```
+mysql --one-database database_name < all_databases.sql
+```
+
+3. Restoring Databases From cPanel Backups
+
+4. Additonal
+
+```bash
+mysqldump -u [username] -p[password] [dbname] > [dbname].sql
+```
 ## Install Sysbench Debian
 
 	Make sure the system is updated. Then simply install Sysbench, and MySQL Server if you plan on running OLTP tests.
