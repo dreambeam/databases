@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#if [ -z '$(ps -e | grep mysqld)'];then 
+#	exit 0;
+#else
+#	echo "mysqld service unhealthy" 
+#fi
+
+ps -e | grep -w -q 'mysqld'
+
+RESULT=$?
+
+if [ $RESULT -eq  0 ];then
+    sleep 1
+    exit 0
+
+else
+	echo "mysql service unhealthy"
+fi
+

@@ -33,7 +33,6 @@ mysql> SELECT User FROM mysql.user;
 mysql> SELECT DISTINCT User FROM mysql.user;
 
 ## Create a proxysql monitor
-
 ```
 mysql> CREATE USER 'proxysqlmonitor'@'%' IDENTIFIED BY 'root';
 mysql> GRANT USAGE ON *.* TO 'proxysqlmonitor'@'%';
@@ -42,7 +41,6 @@ mysql> FLUSH PRIVILEGES;
 
 
 ## Create Database
-
 ```
 mysql> CREATE DATABASE testdb;
 
@@ -65,7 +63,6 @@ mysql> select * from table1;
 
 
 ## Query size of mysql db
-
 ```
 mysql> SELECT table_schema "systest", Round(Sum(data_length + index_length) / 1024 /1024, 1) "DB Size in MB"
     -> FROM information_schema.tables
@@ -73,7 +70,6 @@ mysql> SELECT table_schema "systest", Round(Sum(data_length + index_length) / 10
 ;
 ```
 ## How to Get True Size of MySQL Database?
-
 ```
 mysql> SHOW TABLE STATUS LIKE 'table_name';
 mysql> SHOW TABLE STATUS LIKE 'sbtest1';
@@ -134,17 +130,18 @@ mysqldump -u [username] -p[password] [dbname] > [dbname].sql
 ## Install Sysbench CentOS
 	
 	- CentOS 7.1
-	Install Sysbench 0.4.12 via YUM.
-	It's available in the epel repo.
-
-	$ yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-	$ yum install sysbench
+		Install Sysbench 0.4.12 via YUM.
+		It's available in the epel repo.
+		```
+		$ yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+		$ yum install sysbench
+		```
 
 	- CentOS 7.3
-
-	Install Sysbench 0.5 via YUM
-	You need to install the latest Percona repo to install Sysbench 0.5 if you use EPEL you will install version 0.4.12. Sysbench version 0.5 allows you to do LUA scripting and create multiple tables to run the OLTP test against.
-
-	$ wget https://www.percona.com/redir/downloads/percona-release/redhat/latest/percona-release-0.1-4.noarch.rpm
-	$ rpm -Uvh percona-release-0.1-4.noarch.rpm
-	$ yum install sysbench
+		Install Sysbench 0.5 via YUM
+		You need to install the latest Percona repo to install Sysbench 0.5 if you use EPEL you will install version 0.4.12. Sysbench version 0.5 allows you to do LUA scripting and create multiple tables to run the OLTP test against.
+		```
+		$ wget https://www.percona.com/redir/downloads/percona-release/redhat/latest/percona-release-0.1-4.noarch.rpm
+		$ rpm -Uvh percona-release-0.1-4.noarch.rpm
+		$ yum install sysbench
+		```
