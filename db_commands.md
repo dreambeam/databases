@@ -31,6 +31,7 @@ mysql -u root -p
 mysql> SELECT User, Host, Password FROM mysql.user;
 mysql> SELECT User FROM mysql.user;
 mysql> SELECT DISTINCT User FROM mysql.user;
+```
 
 ## Create a proxysql monitor
 
@@ -40,26 +41,21 @@ mysql> GRANT USAGE ON *.* TO 'proxysqlmonitor'@'%';
 mysql> FLUSH PRIVILEGES;
 ```
 
-
 ## Create Database
 
 ```
 mysql> CREATE DATABASE testdb;
-
 mysql> USE testdb;
 mysql> CREATE TABLE example (node_id INT PRIMARY KEY, node_name VARCHAR(30));
 mysql> INSERT INTO testdb.example VALUES (1, 'sometext');
 mysql> SELECT * FROM testdb.example;
 ```
 
-
 ## Create Table
 
 ```
 mysql> create table table1 (a int not null auto_increment, primary key(a));
-
 mysql> insert into table1 values (),(),(),(),();
-
 mysql> select * from table1;
 ```
 
@@ -69,9 +65,10 @@ mysql> select * from table1;
 mysql> SELECT table_schema "systest", Round(Sum(data_length + index_length) / 1024 /1024, 1) "DB Size in MB"
     -> FROM information_schema.tables
     -> GROUP By table_schema;
-;
 ```
+
 ## How to Get True Size of MySQL Database?
+
 ```
 mysql> SHOW TABLE STATUS LIKE 'table_name';
 mysql> SHOW TABLE STATUS LIKE 'sbtest1';
@@ -136,6 +133,7 @@ $ apt-get update
 $ apt-get install -y sysbench
 $ apt-get install -y mysql-server
 $ sysbench --test=fileio --file-total-size=4G --file-num=64 prepare
+```
 
 ## Install Sysbench CentOS
 	
